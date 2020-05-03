@@ -1,8 +1,10 @@
 <section class="movieitem">
+
   <div class="recherche row h-100 justify-content-center align-items-center">
-    <input type="text" placeholder="Rechercher" v-model="barreRecherche">
+    <input class="recherche-input" type="text" placeholder="Rechercher" v-model="barreRecherche">
+    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
     <select name="recherche" v-model="selectRecherche">
-      <option value=""></option>
+      <option value="">trier...</option>
       <option value="titre">Titre du film</option>
       <option value="realisateur">Nom du réalisateur</option>
       <option value="anneeSortie">Année de sortie</option>
@@ -13,7 +15,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4" v-for="(movie, index) of recherche"><strong>{{movie.titre}}</strong> ({{movie.anneeSortie}})
-        <img style="cursor: pointer;" v-on:click="display(index)" class="img" v-bind:src="movie.img" alt="poster">
+        <div class="div-img">
+          <img style="cursor: pointer;" v-on:click="display(index)" class="img" v-bind:src="movie.img" alt="poster">
+        </div>
         <div v-if="movie.displayed" class="card-body">
           <p>Réalisateur :</p>
           <p>Nom : {{movie.realisateur.nomRealisateur}} </p>

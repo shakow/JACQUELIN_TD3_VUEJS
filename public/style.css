@@ -1,5 +1,14 @@
-.body{
-    cursor:url(../src/assets/curseur.png),auto;
+*{
+    font-family: Helvetica;
+
+}
+body{
+    background-color: #312F2F !important;
+}
+.icon-netfilm{
+    width: 85px;
+    position: absolute;
+    padding: 15px;
 }
 
 .img-div {
@@ -16,15 +25,71 @@
     height: 400px;
     display: block;
     margin: auto;
+    transition: 1s ;
 }
 
-.recherche{
-    margin-bottom: 15px;
+.div-img{
+    width: 290px;
+    height: 400px;
+    background-color: white;
 }
+.img:hover{
+    filter: opacity(0.6);
+    transition: 1s;
+}
+
+.fas{
+    color: white;
+}
+.recherche{
+    margin: auto !important;
+    margin-bottom: 25px !important;
+    height: 150px !important;
+    background-color: #141414;
+    padding: 50px;
+    width: 100%;
+    }
+
+    .recherche-input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    transition: width 0.4s linear;
+    }
+
+    .recherche:hover > .recherche-input{
+    padding: 0 10px;
+    width: 25%;
+    caret-color: white;
+    transition: width 0.4s linear;
+    }
+
+    .recherche:hover > .recherche-icon{
+    background: white;
+    color: white;
+    }
+
+    .recherche-icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+
 
 .ajoutfilm{
+    margin-top: 25px;
     border: 1rem solid;
     padding: 25px;
+    color: white;
 }
 
 .button{
