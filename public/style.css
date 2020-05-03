@@ -11,6 +11,10 @@ body{
     padding: 15px;
 }
 
+.white{
+    color: white !important;
+}
+
 .img-div {
     width: 30%;
     height: auto;
@@ -40,6 +44,7 @@ body{
 
 .fas{
     color: white;
+    padding-right: 10px;
 }
 .recherche{
     margin: auto !important;
@@ -90,6 +95,10 @@ body{
     border: 1rem solid;
     padding: 25px;
     color: white;
+}
+
+.hidden-button{
+    display: none;
 }
 
 .button{

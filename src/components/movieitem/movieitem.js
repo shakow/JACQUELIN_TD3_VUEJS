@@ -73,6 +73,8 @@ export default {
         this.$movies[index].displayed = true;
       else if (this.$movies[index].displayed == true)
         this.$movies[index].displayed = false;
+
+        
     },                
   }
 }
