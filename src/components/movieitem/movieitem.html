@@ -1,38 +1,43 @@
 <section class="movieitem">
+  <div class="recherche row h-100 justify-content-center align-items-center">
+    <input type="text" placeholder="Rechercher" v-model="barreRecherche">
+    <select name="recherche" v-model="selectRecherche">
+      <option value=""></option>
+      <option value="titre">Titre du film</option>
+      <option value="realisateur">Nom du réalisateur</option>
+      <option value="anneeSortie">Année de sortie</option>
+    </select>
+  </div>
 
-  <input type="text" placeholder="Rechercher" v-model="barreRecherche">
-  <select name="recherche" v-model="selectRecherche">
-    <option value=""></option>
-    <option value="titre">Titre du film</option>
-    <option value="realisateur">Nom du réalisateur</option>
-    <option value="anneeSortie">Année de sortie</option>
-  </select>
 
-  <div class="container" >
+  <div class="container">
     <div class="row">
-        <div class="col-md-4" v-for="(movie, index) of recherche"><strong>{{movie.titre}}</strong> ({{movie.anneeSortie}}) 
-            <img style="cursor: pointer;" v-on:click="display(index)" class="img" v-bind:src="movie.img" alt="poster" >
-            <div v-if="movie.displayed" class="card-body" >
-            <p>Réalisateur :</p>
-            <p>Nom : {{movie.realisateur.nomRealisateur}} </p>
-            <p>Nationalité : {{movie.realisateur.nationnaliteRealisateur}} </p>
-            <p>Date de naissance : {{movie.realisateur.naissanceRealisateur}} </p>
-            <star-rating read-only= true v-model="movie.note" ></star-rating>
-            <p>Synopsis : {{movie.synopsis}}</p>
+      <div class="col-md-4" v-for="(movie, index) of recherche"><strong>{{movie.titre}}</strong> ({{movie.anneeSortie}})
+        <img style="cursor: pointer;" v-on:click="display(index)" class="img" v-bind:src="movie.img" alt="poster">
+        <div v-if="movie.displayed" class="card-body">
+          <p>Réalisateur :</p>
+          <p>Nom : {{movie.realisateur.nomRealisateur}} </p>
+          <p>Nationalité : {{movie.realisateur.nationnaliteRealisateur}} </p>
+          <p>Date de naissance : {{movie.realisateur.naissanceRealisateur}} </p>
+          <star-rating :read-only="true" v-model="movie.note"></star-rating>
+          <p>Synopsis : {{movie.synopsis}}</p>
 
-          </div>
-          <router-link :to="{path: '/movie/' + index + '/edit'}" class="nav-link">edit</router-link>
-          <button v-on:click="deleteMovie(index)"><i class="small material-icons"> delete_forever </i></button>
         </div>
+        <router-link :to="{path: '/movie/' + index + '/edit'}" class="nav-link">edit</router-link>
+        <button class="button" v-on:click="deleteMovie(index)"><i class="small material-icons">Supprimer</i></button>
+      </div>
     </div>
   </div>
-      <input v-model="newMovieImg" type="text" placeholder="URL du poster">
-      <input v-model="newMovieTitle" type="text" placeholder="Titre">
-      <input v-model="newMovieYear" type="text" placeholder="Annee de sortie">
-      <input v-model="newMovieRealName" type="text" placeholder="Nom du réalisateur">
-      <input v-model="newMovieRealNationalite" type="text" placeholder="Nationalité du réalisateur">
-      <input v-model="newMovieRealBirth" type="text" placeholder="Année de naissance du réalisateur">
-      <input v-model="newMovieNote" type="text" placeholder="Note du film sur 5">
-      <textarea v-model="newMovieSynopsis" type="text" placeholder="Synopsis"></textarea>
-      <button v-on:click="addMovie()">Ajouter le film</button>
+  <div class="ajoutfilm col-6 offset-md-3">
+    <input class="col-12" v-model="newMovieImg" type="text" placeholder="URL du poster">
+    <input class="col-9" v-model="newMovieTitle" type="text" placeholder="Titre">
+    <input class="col-3" v-model="newMovieYear" type="text" placeholder="Annee de sortie">
+    <input class="col-6" v-model="newMovieRealName" type="text" placeholder="Nom du réalisateur">
+    <input class="col-6" v-model="newMovieRealBirth" type="text" placeholder="Année de naissance du réalisateur">
+    <input class="col-3 offset-md-2" v-model="newMovieRealNationalite" type="text" placeholder="Nationalité du réalisateur">
+    <input class="col-3 offset-md-2" v-model="newMovieNote" type="text" placeholder="Note du film sur 5">
+    <textarea class="col-12" v-model="newMovieSynopsis" type="text" placeholder="Synopsis"></textarea>
+    <button class="button" v-on:click="addMovie()">Ajouter le film</button>
+  </div>
+
 </section>
