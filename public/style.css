@@ -1,11 +1,14 @@
 .body{
-    cursor: curso, pointer;
+    cursor:url(../src/assets/curseur.png),auto;
 }
+
 .img-div {
     width: 30%;
     height: auto;
     overflow: hidden;  
     margin: auto;
+    cursor: url("../src/assets/cursor.JPG"), pointer;
+
 }
 
 .img {
