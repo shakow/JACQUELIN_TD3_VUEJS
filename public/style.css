@@ -5,14 +5,27 @@
 body{
     background-color: #312F2F !important;
 }
+
+
 .icon-netfilm{
     width: 85px;
     position: absolute;
     padding: 15px;
 }
 
+.logo-netflim{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.logo{
+    width: 400px;
+}
+
 .white{
     color: white !important;
+    text-align: center;
 }
 
 .img-div {
@@ -29,6 +42,7 @@ body{
     height: 400px;
     display: block;
     margin: auto;
+    align-items: center;
     transition: 1s ;
 }
 
@@ -36,6 +50,7 @@ body{
     width: 290px;
     height: 400px;
     background-color: white;
+    margin: auto;
 }
 .img:hover{
     filter: opacity(0.6);
@@ -98,12 +113,20 @@ body{
 }
 
 .hidden-button{
-    display: none;
+    width: 100%;
+    background-color: #141414;
+    border-radius: 5px;
+    border: 0;
 }
 
-.button{
-    width: 30%;
-    display: block;
-    margin : auto;
+.nav-link{
+    padding: 0 !important;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.balec{
+    margin: auto;
+    width: 80%;
 }
 
