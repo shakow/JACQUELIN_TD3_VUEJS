@@ -1,0 +1,27 @@
+.film{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: center;  
+}
+.img-div {
+    width: 30%;
+    height: auto;
+    overflow: hidden;  
+    margin: auto;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    
+}
+
+.card {
+    border: none !important;     
+}
+

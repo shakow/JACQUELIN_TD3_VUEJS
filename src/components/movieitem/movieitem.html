@@ -1,0 +1,38 @@
+<section class="movieitem">
+
+  <input type="text" placeholder="Rechercher" v-model="barreRecherche">
+  <select name="recherche" v-model="selectRecherche">
+    <option value=""></option>
+    <option value="titre">Titre du film</option>
+    <option value="realisateur">Nom du réalisateur</option>
+    <option value="anneeSortie">Année de sortie</option>
+  </select>
+
+  <div class="container" >
+    <div class="row">
+        <div class="col-md-4" v-for="(movie, index) of recherche"><strong>{{movie.titre}}</strong> ({{movie.anneeSortie}}) 
+            <img style="cursor: pointer;" v-on:click="display(index)" class="img" v-bind:src="movie.img" alt="poster" >
+            <div v-if="movie.displayed" class="card-body" >
+            <p>Réalisateur :</p>
+            <p>Nom : {{movie.realisateur.nomRealisateur}} </p>
+            <p>Nationalité : {{movie.realisateur.nationnaliteRealisateur}} </p>
+            <p>Date de naissance : {{movie.realisateur.naissanceRealisateur}} </p>
+            <star-rating read-only= true v-model="movie.note" ></star-rating>
+            <p>Synopsis : {{movie.synopsis}}</p>
+
+          </div>
+          <router-link :to="{path: '/movie/' + index + '/edit'}" class="nav-link">edit</router-link>
+          <button v-on:click="deleteMovie(index)"><i class="small material-icons"> delete_forever </i></button>
+        </div>
+    </div>
+  </div>
+      <input v-model="newMovieImg" type="text" placeholder="URL du poster">
+      <input v-model="newMovieTitle" type="text" placeholder="Titre">
+      <input v-model="newMovieYear" type="text" placeholder="Annee de sortie">
+      <input v-model="newMovieRealName" type="text" placeholder="Nom du réalisateur">
+      <input v-model="newMovieRealNationalite" type="text" placeholder="Nationalité du réalisateur">
+      <input v-model="newMovieRealBirth" type="text" placeholder="Année de naissance du réalisateur">
+      <input v-model="newMovieNote" type="text" placeholder="Note du film sur 5">
+      <textarea v-model="newMovieSynopsis" type="text" placeholder="Synopsis"></textarea>
+      <button v-on:click="addMovie()">Ajouter le film</button>
+</section>
