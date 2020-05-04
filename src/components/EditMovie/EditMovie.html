@@ -1,15 +1,20 @@
+ <div class="bandeau"></div>
+ 
  <section class="edit-movie">
-  <input type="text" v-model:value="movie.titre" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Titre">
-  <input type="text" v-model:value="movie.anneeSortie" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de sortie du film">
-  <input type="text" v-model:value="movie.realisateur.nomRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nom du réalisateur">
-  <input type="text" v-model:value="movie.realisateur.nationnaliteRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nationalité du réalisateur">
-  <star-rating v-model="movie.note"></star-rating>
-  <input type="text" v-model:value="movie.realisateur.naissanceRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de naissance du réalisateur">
+  <div class="ajoutfilm col-6 offset-md-3">
 
-  <textarea v-model:value="movie.synopsis" :disabled="!isEditing":class="{view: !isEditing}"></textarea>
-  <button @click="isEditing = !isEditing" v-if="!isEditing">Edit</button>
-  <button @click="save" v-else-if="isEditing">Save</button> 
-  <button v-if="isEditing" @click="isEditing = false">Cancel</button>
+  <input class="ajoutfilm-item" type="text" v-model:value="movie.titre" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Titre">
+  <input class="ajoutfilm-item" type="text" v-model:value="movie.anneeSortie" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de sortie du film">
+  <input class="ajoutfilm-item" type="text" v-model:value="movie.realisateur.nomRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nom du réalisateur">
+  <input class="ajoutfilm-item" type="text" v-model:value="movie.realisateur.nationnaliteRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nationalité du réalisateur">
+  <star-rating  v-model="movie.note"></star-rating>
+  <input class="ajoutfilm-item" type="text" v-model:value="movie.realisateur.naissanceRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de naissance du réalisateur">
+
+  <textarea class="ajoutfilm-item" v-model:value="movie.synopsis" :disabled="!isEditing":class="{view: !isEditing}"></textarea>
+  <button class="ajoutfilm-item" @click="isEditing = !isEditing" v-if="!isEditing">Edit</button>
+  <button class="ajoutfilm-item" @click="save" v-else-if="isEditing">Save</button> 
+  <button class="ajoutfilm-item" v-if="isEditing" @click="isEditing = false">Cancel</button>
+  </div>
 </section> 
 
 

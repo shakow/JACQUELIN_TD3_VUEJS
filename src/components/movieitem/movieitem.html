@@ -58,17 +58,23 @@
       </div>
     </div>
   </div>
+  <hr class="ligne"/>
   <div class="ajoutfilm col-6 offset-md-3">
-    <input class="col-12" v-model="newMovieImg" type="text" placeholder="URL du poster">
-    <input class="col-9" v-model="newMovieTitle" type="text" placeholder="Titre">
-    <input class="col-3" v-model="newMovieYear" type="text" placeholder="Annee de sortie">
-    <input class="col-6" v-model="newMovieRealName" type="text" placeholder="Nom du réalisateur">
-    <input class="col-6" v-model="newMovieRealBirth" type="text" placeholder="Année de naissance du réalisateur">
-    <input class="col-3 offset-md-2" v-model="newMovieRealNationalite" type="text"
-      placeholder="Nationalité du réalisateur">
-    <input class="col-3 offset-md-2" v-model="newMovieNote" type="text" placeholder="Note du film sur 5">
-    <textarea class="col-12" v-model="newMovieSynopsis" type="text" placeholder="Synopsis"></textarea>
-    <button class="button" v-on:click="addMovie()">Ajouter le film</button>
+    <input class="col-12 ajoutfilm-item" v-model="newMovieImg" type="text" placeholder="URL du poster">
+    <input class="col-8 ajoutfilm-item" v-model="newMovieTitle" type="text" placeholder="Titre">
+    <input class="col-4 ajoutfilm-item" v-model="newMovieYear" type="text" placeholder="Année de sortie">
+    <input class="col-6 ajoutfilm-item" v-model="newMovieRealName" type="text" placeholder="Nom du réalisateur">
+    <input class="col-6 ajoutfilm-item" v-model="newMovieRealBirth" type="text" placeholder="Année de naissance du réalisateur">
+    <input class="col-3 offset-md-2 ajoutfilm-item" v-model="newMovieRealNationalite" type="text" placeholder="Nationalité du réal.">
+    <input class="col-3 offset-md-2 ajoutfilm-item" v-model="newMovieNote" type="text" placeholder="Note du film sur 5">
+    <textarea class="col-12 ajoutfilm-item" v-model="newMovieSynopsis" type="text" placeholder="Synopsis"></textarea>
+    <button class="col-4 offset-md-4 hidden-button" v-on:click="addMovie()">
+      <i>
+        <svg class="bi bi-plus-circle-fill" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z" clip-rule="evenodd"/>
+        </svg>
+      </i>
+    </button>
   </div>
 
 </section>
