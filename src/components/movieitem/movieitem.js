@@ -35,12 +35,13 @@ export default {
   },
   computed: {
     recherche: function() {
-      if (this.selectRecherche == "titre") {
-        return this.$movies.filter(data => data.titre.includes(this.barreRecherche));
+
+      if ( this.selectRecherche == "titre") {
+        return this.$movies.filter(movie => movie.titre.toLowerCase().includes(this.barreRecherche.toLowerCase()));
       }if (this.selectRecherche == "realisateur") {
-        return this.$movies.filter(data => data.realisateur.nomRealisateur.includes(this.barreRecherche));
+        return this.$movies.filter(movie => movie.realisateur.nomRealisateur.toLowerCase().includes(this.barreRecherche.toLowerCase()));
       }if (this.selectRecherche == "anneeSortie") {
-        return this.$movies.filter(data => data.anneeSortie.includes(this.barreRecherche));
+        return this.$movies.filter(movie => movie.anneeSortie.toLowerCase().includes(this.barreRecherche.toLowerCase()));
       }
       else {
         return this.$movies;
@@ -51,6 +52,7 @@ export default {
   methods: {
     deleteMovie: function (index) {
       this.$movies.splice(index, 1)
+      this.$forceUpdate();
     },
     addMovie: function () {
       const newReal = new Realisateur(
@@ -67,14 +69,14 @@ export default {
         this.newMovieNote);
 
       this.$movies.push(newMovie);
+      this.$forceUpdate();
+
     },
     display: function (index) {
       if (this.$movies[index].displayed == false)
         this.$movies[index].displayed = true;
       else if (this.$movies[index].displayed == true)
-        this.$movies[index].displayed = false;
-
-        
+        this.$movies[index].displayed = false;    
     },                
   }
 }

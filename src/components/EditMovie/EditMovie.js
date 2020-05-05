@@ -5,7 +5,7 @@ export default {
   data () {
     return {
       isEditing : false,
-      movie: this.$movies[this.$route.params.id]
+      movie: this.$movies[this.$route.params.id],
     }
   },
   computed: {
@@ -17,11 +17,15 @@ export default {
     this.$movies.dispatch('editMovie', this.movie);
   },
   methods: {
-    save() {
-      this.cachedUser = Object.assign({}, this.movie);
-      this.isEditing = !this.isEditing ;
-    },
+  save() {
+    this.movies = Object.assign({}, this.movie);
+    this.isEditing = false;
   },
+  cancel() {
+    this.movies = Object.assign(this.movie, this.movies);
+    this.isEditing = false;
+  }
+}
 }
 
 export class Movie {

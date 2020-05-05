@@ -24,17 +24,17 @@
           <img style="cursor: pointer;" v-on:click="display(index)" class="img" v-bind:src="movie.img" alt="poster">
         </div>
         <div v-if="movie.displayed" class="card-body white">
-          <p>Réalisateur :</p>
-          <p>Nom : {{movie.realisateur.nomRealisateur}} </p>
-          <p>Nationalité : {{movie.realisateur.nationnaliteRealisateur}} </p>
-          <p>Date de naissance : {{movie.realisateur.naissanceRealisateur}} </p>
-          <star-rating :read-only="true" v-model="movie.note"></star-rating>
-          <p>Synopsis : {{movie.synopsis}}</p>
+          <p><strong>Réalisateur</strong></p>
+          <p><u>Nom</u> : {{movie.realisateur.nomRealisateur}} </p>
+          <p><u>Nationalité</u> : {{movie.realisateur.nationnaliteRealisateur}} </p>
+          <p><u>Date de naissance</u> : {{movie.realisateur.naissanceRealisateur}} </p>
+          <star-rating increment="0.5" :show-rating="false" rounded-corners="true" glow="10" :read-only="true" v-model="movie.note"></star-rating>
+          <p><u>Synopsis</u> : {{movie.synopsis}}</p>
 
         </div>
-        <div class="balec">
+        <div class="btn-poster">
           <router-link :to="{path: '/movie/' + index + '/edit'}" class="nav-link">
-            <button class="hidden-button">
+            <button class="hidden-button btn">
               <i>
                 <svg class="bi bi-brush" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16"
                   fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@
                   <path d="M7 12a2 2 0 01-2 2c-1 0-2 0-3.5-.5s.5-1 1-1.5 1.395-2 2.5-2a2 2 0 012 2z" />
                 </svg>
               </i></button></router-link>
-          <button class="hidden-button" v-on:click="deleteMovie(index)">
+          <button class="hidden-button btn" v-on:click="deleteMovie(index)">
             <i>
               <svg class="bi bi-trash-fill" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -67,14 +67,17 @@
     <input class="col-6 ajoutfilm-item" v-model="newMovieRealBirth" type="text" placeholder="Année de naissance du réalisateur">
     <input class="col-3 offset-md-2 ajoutfilm-item" v-model="newMovieRealNationalite" type="text" placeholder="Nationalité du réal.">
     <input class="col-3 offset-md-2 ajoutfilm-item" v-model="newMovieNote" type="text" placeholder="Note du film sur 5">
-    <textarea class="col-12 ajoutfilm-item" v-model="newMovieSynopsis" type="text" placeholder="Synopsis"></textarea>
-    <button class="col-4 offset-md-4 hidden-button" v-on:click="addMovie()">
-      <i>
-        <svg class="bi bi-plus-circle-fill" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z" clip-rule="evenodd"/>
-        </svg>
-      </i>
-    </button>
+    <textarea id="synopsis" class="col-12 ajoutfilm-item" v-model="newMovieSynopsis" type="text" placeholder="Synopsis"></textarea>
+    <div class="box-btn">
+      <button class="col-4 offset-md-4 hidden-button btn" v-on:click="addMovie()">
+        <i>
+          <svg class="bi bi-plus-circle-fill" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z" clip-rule="evenodd"/>
+          </svg>
+        </i>
+      </button>  
+    </div>
+    
   </div>
 
 </section>

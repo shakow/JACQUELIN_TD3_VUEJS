@@ -1,22 +1,45 @@
  
  
  <section class="edit-movie">
-   <div class="bandeau">aze</div>
+  <div class="bandeau"></div>
   <div class="ajoutfilm col-6 offset-md-3">
+  <div class="div-img">
+    <img style="cursor: pointer;" v-on:click="display(index)" class="img" v-bind:src="movie.img" alt="poster">
+  </div>
+  <input class="col-12 ajoutfilm-item"type="text" v-model:value="movie.img" :disabled="!isEditing":class="{view: !isEditing}" placeholder="URL du poster">
+  <input class="col-6 ajoutfilm-item" type="text" v-model:value="movie.titre" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Titre">
+  <input class="col-6 ajoutfilm-item" type="text" v-model:value="movie.anneeSortie" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de sortie du film">
+  <input class="col-3 ajoutfilm-item" type="text" v-model:value="movie.realisateur.nomRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nom du réalisateur">
+  <input class="col-3 ajoutfilm-item" type="text" v-model:value="movie.realisateur.nationnaliteRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nationalité du réalisateur">
+  <input class="col-6 ajoutfilm-item" type="text" v-model:value="movie.realisateur.naissanceRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de naissance du réalisateur">
+  <star-rating increment="0.5" :show-rating="false" rounded-corners="true" glow="10" v-model="movie.note" ></star-rating>
 
-  <input class="ajoutfilm-item" type="text" v-model:value="movie.titre" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Titre">
-  <input class="ajoutfilm-item" type="text" v-model:value="movie.anneeSortie" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de sortie du film">
-  <input class="ajoutfilm-item" type="text" v-model:value="movie.realisateur.nomRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nom du réalisateur">
-  <input class="ajoutfilm-item" type="text" v-model:value="movie.realisateur.nationnaliteRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Nationalité du réalisateur">
-  <star-rating  v-model="movie.note"></star-rating>
-  <input class="ajoutfilm-item" type="text" v-model:value="movie.realisateur.naissanceRealisateur" :disabled="!isEditing":class="{view: !isEditing}" placeholder="Année de naissance du réalisateur">
-
-  <textarea class="ajoutfilm-item" v-model:value="movie.synopsis" :disabled="!isEditing":class="{view: !isEditing}"></textarea>
-  <button class="ajoutfilm-item" @click="isEditing = !isEditing" v-if="!isEditing">Edit</button>
-  <button class="ajoutfilm-item" @click="save" v-else-if="isEditing">Save</button> 
-  <button class="ajoutfilm-item" v-if="isEditing" @click="isEditing = false">Cancel</button>
+  <textarea id="synopsis" class="col-12 ajoutfilm-item" v-model:value="movie.synopsis" :disabled="!isEditing":class="{view: !isEditing}"></textarea>
+  <button id="editMovie-btn" class="ajoutfilm-item hidden-button btn" @click="isEditing = !isEditing" v-if="!isEditing">
+    <i>
+      <svg class="bi bi-brush" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M15.213 1.018a.572.572 0 01.756.05.57.57 0 01.057.746C15.085 3.082 12.044 7.107 9.6 9.55c-.71.71-1.42 1.243-1.952 1.596-.508.339-1.167.234-1.599-.197-.416-.416-.53-1.047-.212-1.543.346-.542.887-1.273 1.642-1.977 2.521-2.35 6.476-5.44 7.734-6.411z" />
+        <path d="M7 12a2 2 0 01-2 2c-1 0-2 0-3.5-.5s.5-1 1-1.5 1.395-2 2.5-2a2 2 0 012 2z" />
+      </svg>
+    </i>
+  </button>
+  <button id="editMovie-btn" class="ajoutfilm-item hidden-button btn" @click="save" v-else-if="isEditing">
+    <i>
+      <svg class="bi bi-check-circle" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M8 2.5A5.5 5.5 0 1013.5 8a.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63.5.5 0 11-.5.865A5.472 5.472 0 008 2.5z" clip-rule="evenodd"/>
+      </svg>
+    </i>
+  </button>
+  <button id="editMovie-btn" class="ajoutfilm-item hidden-button btn" @click="cancel" v-if="isEditing">
+    <i>
+      <svg class="bi bi-x-circle-fill" width="1em" height="1em" color="#e50914" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-4.146-3.146a.5.5 0 00-.708-.708L8 7.293 4.854 4.146a.5.5 0 10-.708.708L7.293 8l-3.147 3.146a.5.5 0 00.708.708L8 8.707l3.146 3.147a.5.5 0 00.708-.708L8.707 8l3.147-3.146z" clip-rule="evenodd"/>
+      </svg>
+  </i></button>
   </div>
 </section> 
-
 
 
